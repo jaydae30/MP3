@@ -85,7 +85,8 @@ async function sendList(Model,req,res,defaultLimit) {
             if (sort) query = query.sort(sort);
             if (select) query = query.select(select);
             if (skip !== undefined) query = query.skip(skip);
-            if (limit !== undefined) query = query.limit(defaultLimit);
+            if (limit !== undefined) query = query.limit(limit);
+            else if (defaultLimit !== undefined) query = query.limit(defaultLimit);
             result = await query.exec();
         }
     } catch (err) {

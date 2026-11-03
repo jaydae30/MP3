@@ -27,9 +27,8 @@ function handle(fn) {
 
 function parseObjectParam(value, name) {
     if (value === undefined) return undefined;
-    var n = typeof value === 'string' && value.trim() != '' ? Number(value) : NaN;
-    if (!Number.isInteger(n) || n < 0) {
-        throw new HttpError(400, 'The "' + name + '" must be a non-negative whole number.');
+    if (typeof value !== 'string') {
+        throw new HttpError(400, 'The "' + name + '" parameter must be valid JSON.');
     }
     var parsed;
     try {

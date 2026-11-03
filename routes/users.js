@@ -147,7 +147,7 @@ module.exports = function (router) {
                 { $set: { assignedUser: '', assignedUserName: 'unassigned' } }
             );
             await User.deleteOne({ _id: user._id });
-            return h.send(res, 200, 'User deleted', user);
+            return res.status(204).end();
         }));
  
     return router;
